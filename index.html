@@ -119,6 +119,56 @@
             </div>
         </div>
     </div>
+<script>
+        document.querySelectorAll('.show').forEach(button => {
+            button.addEventListener('click', function () {
+                const parentbox = button.parentElement;
+                const detail = parentbox.querySelector('.detail');
+                detail.style.display = "block";
+                button.style.display = "none";
+            });
+        });
+        document.querySelectorAll('.close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', function () {
+                const parentBox = closeBtn.parentElement;
+                const outerBox = parentBox.parentElement;
+                const showBtn = outerBox.querySelector('.show');
+                parentBox.style.display = "none";
+                showBtn.style.display = "block";
+            });
+        });
+
+        var sum = 0;
+var boxes = document.querySelectorAll('.box');
+var button = document.getElementById('submit');
+
+boxes.forEach(function (box) {
+    box.onclick = picked;
+
+    function picked() {
+        if (box.classList.contains('selected')) {
+            box.classList.remove('selected');
+            box.style.boxShadow = "none";
+            sum -= 1;
+        } else {
+            box.classList.add('selected');
+            box.style.boxShadow = "0px 0px 10px 6px #FFFF00";
+            sum += 1;
+        }
+    }
+});
+
+
+        button.onclick = submit;
+
+        function submit() {
+            if (sum === 3) {
+                document.write("<video src='50833-462033983_small.mp4' width='100%' height='100%' muted autoplay loop>")
+            } else {
+                alert("3가지를 선택하세요.");
+            }
+        }
+</script>
 </body>
 
 </html>
